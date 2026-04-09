@@ -1,0 +1,18 @@
+# Banco de dados e credenciais — NUNCA subir
+src/main/resources/application.properties
+
+# Build gerado pelo Gradle
+build/
+.gradle/
+
+# Arquivos do IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
