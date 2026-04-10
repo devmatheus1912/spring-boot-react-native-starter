@@ -46,11 +46,10 @@ funcionalidade ser escrita.
 | Dashboard com navegação | ✅ Concluído |
 | Tela de treinos com listagem | ✅ Concluído |
 | Tela de exercícios com séries e carga | ✅ Concluído |
-| Endpoint de perfil do usuário | ✅ Concluído |
-| Tela de perfil com edição de dados | ✅ Concluído |
+| Endpoint e tela de perfil do usuário | ✅ Concluído |
+| Tela de dieta com macronutrientes | ✅ Concluído |
 | Senhas removidas da resposta da API | ✅ Concluído |
 | Configuração CORS para web e mobile | ✅ Concluído |
-| Tela de dieta e refeições | 🔧 Em desenvolvimento |
 | Refresh token automático | 🔧 Em desenvolvimento |
 | Notificações push | 📋 Planejado |
 | Testes automatizados | 📋 Planejado |
@@ -109,6 +108,8 @@ Para abrir no navegador pressione `w` após o Expo iniciar.
 | DELETE | `/api/treinos/{id}` | Deletar treino | Bearer Token |
 | GET | `/api/treinos/{id}/exercicios` | Exercícios do treino | Bearer Token |
 | POST | `/api/treinos/{id}/exercicios` | Adicionar exercício | Bearer Token |
+| GET | `/api/dietas/aluno/{id}` | Dietas do aluno | Bearer Token |
+| POST | `/api/dietas` | Criar dieta | Bearer Token |
 
 ### Exemplo de cadastro
 
@@ -149,15 +150,17 @@ POST /api/auth/login
 - Banco de dados com criação automática de tabelas
 - App mobile com login, cadastro e dashboard
 - API REST com CRUD de treinos e exercícios
+- API REST com dietas e macronutrientes
 - Tela de treinos com listagem por aluno
 - Tela de exercícios com séries, repetições e carga
+- Tela de dieta com macronutrientes diários
 - Endpoint e tela de perfil do usuário
 - Configuração CORS para web e mobile
 - Senhas removidas de todas as respostas da API
 
 ### 🔧 Em desenvolvimento
-- Tela de dieta e plano alimentar
 - Refresh token automático
+- Deploy na nuvem
 
 ### 📋 Planejado
 - Notificações push com Firebase
