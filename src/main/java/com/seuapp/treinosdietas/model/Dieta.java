@@ -1,10 +1,10 @@
 package com.seuapp.treinosdietas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Table(name = "dietas")
@@ -25,10 +25,12 @@ public class Dieta {
 
     @ManyToOne
     @JoinColumn(name = "aluno_id")
+    @JsonIgnoreProperties({"senha", "peso", "altura", "idade"})
     private Usuario aluno;
 
     @ManyToOne
     @JoinColumn(name = "nutricionista_id")
+    @JsonIgnoreProperties({"senha", "peso", "altura", "idade"})
     private Usuario nutricionista;
 
     private LocalDateTime criadoEm;
