@@ -1,5 +1,6 @@
 package com.seuapp.treinosdietas.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,6 @@ public class Exercicio {
 
     @ManyToOne
     @JoinColumn(name = "treino_id")
+    @JsonIgnoreProperties({"exercicios", "aluno", "personal"})
     private Treino treino;
 }

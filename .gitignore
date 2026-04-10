@@ -16,3 +16,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Projetos mobile — tem repositorios proprios
+TAPerformanceApp/
+TAPerformanceApp2/
