@@ -23,6 +23,7 @@ public class Exercicio {
     private Integer descanso;
     private String videoUrl;
     private String observacoes;
+    private String tipo;
 
     @ManyToOne
     @JoinColumn(name = "treino_id")
