@@ -45,11 +45,13 @@ funcionalidade ser escrita.
 | App mobile com login e cadastro | ✅ Concluído |
 | Dashboard com navegação | ✅ Concluído |
 | Tela de treinos com listagem | ✅ Concluído |
+| Tela de exercícios com séries e carga | ✅ Concluído |
+| Endpoint de perfil do usuário | ✅ Concluído |
+| Tela de perfil com edição de dados | ✅ Concluído |
 | Senhas removidas da resposta da API | ✅ Concluído |
 | Configuração CORS para web e mobile | ✅ Concluído |
-| Tela de detalhes do treino | 🔧 Em desenvolvimento |
-| CRUD de perfil com foto | 🔧 Em desenvolvimento |
-| Refresh token | 🔧 Em desenvolvimento |
+| Tela de dieta e refeições | 🔧 Em desenvolvimento |
+| Refresh token automático | 🔧 Em desenvolvimento |
 | Notificações push | 📋 Planejado |
 | Testes automatizados | 📋 Planejado |
 | Deploy na nuvem | 📋 Planejado |
@@ -99,10 +101,14 @@ Para abrir no navegador pressione `w` após o Expo iniciar.
 |---|---|---|---|
 | POST | `/api/auth/register` | Cadastrar usuário | Não |
 | POST | `/api/auth/login` | Login e token JWT | Não |
+| GET | `/api/usuarios/perfil` | Perfil do usuário logado | Bearer Token |
+| PUT | `/api/usuarios/perfil` | Atualizar perfil | Bearer Token |
 | GET | `/api/treinos/aluno/{id}` | Treinos do aluno | Bearer Token |
 | POST | `/api/treinos` | Criar treino | Bearer Token |
 | PUT | `/api/treinos/{id}` | Atualizar treino | Bearer Token |
 | DELETE | `/api/treinos/{id}` | Deletar treino | Bearer Token |
+| GET | `/api/treinos/{id}/exercicios` | Exercícios do treino | Bearer Token |
+| POST | `/api/treinos/{id}/exercicios` | Adicionar exercício | Bearer Token |
 
 ### Exemplo de cadastro
 
@@ -133,7 +139,7 @@ POST /api/auth/login
 - Senhas criptografadas com BCrypt
 - Autenticação via JWT com validade de 24 horas
 - Rotas protegidas por token
-- Dados sensíveis removidos das respostas da API
+- Dados sensíveis removidos de todas as respostas da API
 - CORS configurado por origem
 
 ## Roadmap
@@ -141,19 +147,19 @@ POST /api/auth/login
 ### ✅ Concluído
 - Autenticação completa com JWT
 - Banco de dados com criação automática de tabelas
-- App mobile com telas de login, cadastro e dashboard
-- API REST com CRUD de treinos
+- App mobile com login, cadastro e dashboard
+- API REST com CRUD de treinos e exercícios
 - Tela de treinos com listagem por aluno
+- Tela de exercícios com séries, repetições e carga
+- Endpoint e tela de perfil do usuário
 - Configuração CORS para web e mobile
-- Senhas removidas das respostas da API
+- Senhas removidas de todas as respostas da API
 
 ### 🔧 Em desenvolvimento
-- Tela de detalhes do treino com exercícios
-- CRUD de perfil com foto de avatar
+- Tela de dieta e plano alimentar
 - Refresh token automático
 
 ### 📋 Planejado
-- Tela de dieta e plano alimentar
 - Notificações push com Firebase
 - Upload de fotos com Amazon S3
 - Testes unitários com JUnit e Mockito
