@@ -20,9 +20,9 @@ public class TreinoService {
 
     public Treino criarTreino(TreinoDTO dto, Long personalId) {
         Usuario aluno = usuarioRepository.findById(dto.getAlunoId())
-                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Aluno nao encontrado"));
         Usuario personal = usuarioRepository.findById(personalId)
-                .orElseThrow(() -> new RuntimeException("Personal não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Personal nao encontrado"));
 
         Treino treino = new Treino();
         treino.setNome(dto.getNome());
@@ -40,9 +40,13 @@ public class TreinoService {
         return treinoRepository.findByAlunoId(alunoId);
     }
 
+    public List<Treino> buscarTreinosDoPersonal(Long personalId) {
+        return treinoRepository.findByPersonalId(personalId);
+    }
+
     public Treino atualizarTreino(Long id, TreinoDTO dto) {
         Treino treino = treinoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Treino não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Treino nao encontrado"));
         treino.setNome(dto.getNome());
         treino.setDescricao(dto.getDescricao());
         treino.setNivel(dto.getNivel());

@@ -27,6 +27,11 @@ public class TreinoController {
         return ResponseEntity.ok(treinoService.buscarTreinosDoAluno(alunoId));
     }
 
+    @GetMapping("/personal/{personalId}")
+    public ResponseEntity<List<Treino>> buscarPorPersonal(@PathVariable Long personalId) {
+        return ResponseEntity.ok(treinoService.buscarTreinosDoPersonal(personalId));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Treino> atualizar(@PathVariable Long id,
                                             @RequestBody TreinoDTO dto) {
