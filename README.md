@@ -7,6 +7,7 @@ API REST Java + App Mobile iOS e Android com autenticação JWT
 ![React Native](https://img.shields.io/badge/React_Native-Expo_54-blue?style=flat-square)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-blue?style=flat-square)
 ![JWT](https://img.shields.io/badge/Auth-JWT-purple?style=flat-square)
+![Railway](https://img.shields.io/badge/Deploy-Railway-blueviolet?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey?style=flat-square)
 
 ---
@@ -18,9 +19,11 @@ mobile conectado a um servidor Java. A estrutura foi organizada para
 crescer junto com o projeto — você começa com autenticação e navegação
 prontas e vai adicionando funcionalidades sem reescrever o que já funciona.
 
-Nasceu de uma necessidade real: toda vez que um novo app precisava ser
-criado, semanas eram gastas só na configuração básica antes de qualquer
-funcionalidade ser escrita.
+## API em produção
+
+```
+https://spring-boot-react-native-starter-production.up.railway.app
+```
 
 ## Tecnologias
 
@@ -30,6 +33,7 @@ funcionalidade ser escrita.
 - Spring Data JPA + PostgreSQL
 - CORS configurado para web e mobile
 - Lombok + Gradle
+- Deploy no Railway
 
 **Mobile**
 - React Native + Expo SDK 54
@@ -50,13 +54,14 @@ funcionalidade ser escrita.
 | Tela de dieta com macronutrientes | ✅ Concluído |
 | Senhas removidas da resposta da API | ✅ Concluído |
 | Configuração CORS para web e mobile | ✅ Concluído |
+| Deploy na nuvem Railway | ✅ Concluído |
+| ID do usuário dinâmico no app | ✅ Concluído |
 | Refresh token automático | 🔧 Em desenvolvimento |
 | Notificações push | 📋 Planejado |
 | Testes automatizados | 📋 Planejado |
-| Deploy na nuvem | 📋 Planejado |
 | Publicação Play Store e App Store | 📋 Planejado |
 
-## Como rodar
+## Como rodar localmente
 
 ### Pré-requisitos
 
@@ -89,10 +94,7 @@ npm install
 npx expo start --clear
 ```
 
-Escaneie o QR Code com o Expo Go. O celular e o computador
-precisam estar na mesma rede Wi-Fi.
-
-Para abrir no navegador pressione `w` após o Expo iniciar.
+Escaneie o QR Code com o Expo Go. Para abrir no navegador pressione `w`.
 
 ## Endpoints
 
@@ -143,6 +145,15 @@ POST /api/auth/login
 - Dados sensíveis removidos de todas as respostas da API
 - CORS configurado por origem
 
+## Deploy
+
+O backend está hospedado no Railway com banco PostgreSQL gerenciado.
+
+URL de produção:
+```
+https://spring-boot-react-native-starter-production.up.railway.app
+```
+
 ## Roadmap
 
 ### ✅ Concluído
@@ -157,10 +168,11 @@ POST /api/auth/login
 - Endpoint e tela de perfil do usuário
 - Configuração CORS para web e mobile
 - Senhas removidas de todas as respostas da API
+- Deploy na nuvem Railway
+- ID do usuário buscado dinamicamente
 
 ### 🔧 Em desenvolvimento
 - Refresh token automático
-- Deploy na nuvem
 
 ### 📋 Planejado
 - Notificações push com Firebase
