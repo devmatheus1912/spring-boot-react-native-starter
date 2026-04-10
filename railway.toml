@@ -4,5 +4,7 @@ buildCommand = "./gradlew clean build -x test"
 
 [deploy]
 startCommand = "java -jar build/libs/*.jar"
-healthcheckPath = "/api/auth/login"
 restartPolicyType = "ON_FAILURE"
+
+[variables]
+NIXPACKS_JDK_VERSION = "17"
