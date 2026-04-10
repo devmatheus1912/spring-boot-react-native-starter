@@ -1,0 +1,8 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "./gradlew clean build -x test"
+
+[deploy]
+startCommand = "java -jar build/libs/*.jar"
+healthcheckPath = "/api/auth/login"
+restartPolicyType = "ON_FAILURE"
