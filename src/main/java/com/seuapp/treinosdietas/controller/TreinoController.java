@@ -2,6 +2,7 @@ package com.seuapp.treinosdietas.controller;
 
 import com.seuapp.treinosdietas.dto.TreinoDTO;
 import com.seuapp.treinosdietas.model.Treino;
+import com.seuapp.treinosdietas.service.ExercicioService;
 import com.seuapp.treinosdietas.service.TreinoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 public class TreinoController {
 
     private final TreinoService treinoService;
+    private final ExercicioService exercicioService;
 
     @PostMapping
     public ResponseEntity<Treino> criar(@RequestBody TreinoDTO dto,
@@ -39,8 +41,16 @@ public class TreinoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarTreino(@PathVariable Long id) {
         treinoService.deletarTreino(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{treinoId}/exercicios/{exercicioId}")
+    public ResponseEntity<Void> deletarExercicio(
+            @PathVariable Long treinoId,
+            @PathVariable Long exercicioId) {
+        exercicioService.deletar(treinoId, exercicioId);
         return ResponseEntity.noContent().build();
     }
 }

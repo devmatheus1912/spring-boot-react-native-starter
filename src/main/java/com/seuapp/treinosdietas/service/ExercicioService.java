@@ -26,4 +26,12 @@ public class ExercicioService {
         exercicio.setTreino(treino);
         return exercicioRepository.save(exercicio);
     }
+    public void deletar(Long treinoId, Long exercicioId) {
+        Exercicio exercicio = exercicioRepository.findById(exercicioId)
+                .orElseThrow(() -> new RuntimeException("Exercício não encontrado"));
+        if (!exercicio.getTreino().getId().equals(treinoId)) {
+            throw new RuntimeException("Exercício não pertence a este treino");
+        }
+        exercicioRepository.delete(exercicio);
+    }
 }

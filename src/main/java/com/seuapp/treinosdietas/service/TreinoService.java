@@ -56,4 +56,9 @@ public class TreinoService {
     public void deletarTreino(Long id) {
         treinoRepository.deleteById(id);
     }
+    public void deletar(Long id) {
+        Treino treino = treinoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Treino não encontrado"));
+        treinoRepository.delete(treino);
+    }
 }
