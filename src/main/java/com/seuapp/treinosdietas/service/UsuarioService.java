@@ -6,6 +6,9 @@ import com.seuapp.treinosdietas.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class UsuarioService {
@@ -27,5 +30,37 @@ public class UsuarioService {
         if (dados.getAltura() != null) usuario.setAltura(dados.getAltura());
         if (dados.getIdade() != null) usuario.setIdade(dados.getIdade());
         return usuarioRepository.save(usuario);
+    }
+
+    public List<Usuario> listarAlunos() {
+        return usuarioRepository.findAll()
+                .stream()
+                .filter(u -> "ALUNO".equals(u.getRole()))
+                .collect(Collectors.toList());
+    }
+
+    public List<Usuario> buscarAlunos(String q) {
+        String query = q.toLowerCase().trim();
+        return usuarioRepository.findAll()
+                .stream()
+                .filter(u -> "ALUNO".equals(u.getRole()))
+                .filter(u -> {
+                    // busca por ID exato
+                    if (q.matches("\\d+")) {
+                        return String.valueOf(u.getId()).equals(q);
+                    }
+                    // busca por nome
+                    return u.getNome() != null && u.getNome().toLowerCase().contains(query);
+                })
+                .collect(Collectors.toList());
+    }
+
+    public void deletarAluno(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        if (!"ALUNO".equals(usuario.getRole())) {
+            throw new RuntimeException("Usuário não é um aluno");
+        }
+        usuarioRepository.delete(usuario);
     }
 }
