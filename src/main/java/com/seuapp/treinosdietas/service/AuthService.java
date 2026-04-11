@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -17,7 +20,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
-    public String register(RegisterDTO dto) {
+    public Map<String, Object> register(RegisterDTO dto) {
         if (usuarioRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new RuntimeException("Email já cadastrado");
         }
@@ -27,16 +30,32 @@ public class AuthService {
         usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
         usuario.setRole(dto.getRole());
         usuarioRepository.save(usuario);
-        return jwtUtil.generateToken(usuario.getEmail(), usuario.getRole());
+
+        String token = jwtUtil.generateToken(usuario.getEmail(), usuario.getRole());
+        Map<String, Object> response = new HashMap<>();
+        response.put("token", token);
+        response.put("id", usuario.getId());
+        response.put("nome", usuario.getNome());
+        response.put("email", usuario.getEmail());
+        response.put("role", usuario.getRole());
+        return response;
     }
 
-    public String login(LoginDTO dto) {
+    public Map<String, Object> login(LoginDTO dto) {
         Usuario usuario = usuarioRepository.findByEmail(dto.getEmail())
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         if (!passwordEncoder.matches(dto.getSenha(), usuario.getSenha())) {
             throw new RuntimeException("Senha incorreta");
         }
-        return jwtUtil.generateToken(usuario.getEmail(), usuario.getRole());
+
+        String token = jwtUtil.generateToken(usuario.getEmail(), usuario.getRole());
+        Map<String, Object> response = new HashMap<>();
+        response.put("token", token);
+        response.put("id", usuario.getId());
+        response.put("nome", usuario.getNome());
+        response.put("email", usuario.getEmail());
+        response.put("role", usuario.getRole());
+        return response;
     }
 }

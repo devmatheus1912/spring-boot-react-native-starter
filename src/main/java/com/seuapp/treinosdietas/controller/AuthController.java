@@ -17,14 +17,12 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<Map<String, String>> register(@RequestBody RegisterDTO dto) {
-        String token = authService.register(dto);
-        return ResponseEntity.ok(Map.of("token", token));
+    public ResponseEntity<Map<String, Object>> register(@RequestBody RegisterDTO dto) {
+        return ResponseEntity.ok(authService.register(dto));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody LoginDTO dto) {
-        String token = authService.login(dto);
-        return ResponseEntity.ok(Map.of("token", token));
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginDTO dto) {
+        return ResponseEntity.ok(authService.login(dto));
     }
 }
