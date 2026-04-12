@@ -4,6 +4,7 @@ src/main/resources/application.properties
 # Build gerado pelo Gradle
 build/
 .gradle/
+.claude/
 
 # Arquivos do IntelliJ
 .idea/
